@@ -37,7 +37,6 @@
 TODO:
 - Should the custom price string for simple/variable products (not subscriptions) be displayed on the cart page too?
 - Check the scope of the custom strings (product page, cart, checkout, emails, backend, orders, renewals, etc)
-- Use an existing hook instead of 'woocommerce_variable_product_before_variations' until the PR (https://github.com/woocommerce/woocommerce/pull/19557#pullrequestreview-107731914) is merged and released
 */
 
 // add_filter("woocommerce_subscription_price_string", "wcs_custom_price_strings_cart", 10, 2);
@@ -55,6 +54,11 @@ if ( false === PP_Dependencies::is_subscriptions_active( '2.1' ) ) {
 	return;
 }
 
+// Uses 'woocommerce_variable_product_before_variations' hook if WC>3.34 to add the "custom From string field" to the Variations tab (https://github.com/woocommerce/woocommerce/pull/19557#pullrequestreview-107731914)
+$variations_hook = 'woocommerce_product_options_advanced';
+if(true === PP_Dependencies::is_woocommerce_active( '3.3.5' )){
+	$variations_hook = 'woocommerce_variable_product_before_variations';
+}
 
 /**
  * Adds the 'Custom Price String' field to the product editor page 
@@ -162,9 +166,8 @@ function wcs_cps_from_field(){
 	) );
 	echo "</div>";
 }
-add_action('woocommerce_variable_product_before_variations', 'wcs_cps_from_field'); 
-// This hook should be added to next versions of WooCommerce (https://github.com/woocommerce/woocommerce/pull/19557#pullrequestreview-107731914)
-// To-do: Use a different hook as a rollback
+add_action($variations_hook, 'wcs_cps_from_field'); 
+
 
 /**
   * Save the custom price string in the current product's '_custom_price_string' meta
