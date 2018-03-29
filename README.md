@@ -42,7 +42,7 @@ Edit the product and go to its Variations tab. Expand any of the existing variat
 By default, on each variable product page (frontend), a "From" sting is displayed, showing the minimal starting price of the product. If you edit a variable product and go to its Variations tab, you'll find a new field named "Custom Fom String" that you can can use to customize this string (f.e: "Starting at $10"). 
 
 ![Custom variable product From string](https://d2ffutrenqvap3.cloudfront.net/items/1y2R0V1f2V342t0J3A3A/Image%202018-03-28%20at%2011.08.15%20p.%20m..png?v=7b535716)
-
+* If you're using a WooCommerce version prior or equal to 3.3.4, this field will appear in "Advanced" tab instead.
 
 ### Result on the Frontend
 ![Product with custom From and Price string](https://d2ffutrenqvap3.cloudfront.net/items/1s0Y001b1Q3D2r2l2U3A/Image%202018-03-28%20at%2011.11.17%20p.%20m..png?v=01bb032d)
