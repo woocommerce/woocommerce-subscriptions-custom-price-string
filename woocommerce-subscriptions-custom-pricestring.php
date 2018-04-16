@@ -56,7 +56,7 @@ if ( false === PP_Dependencies::is_subscriptions_active( '2.1' ) ) {
 
 // Uses 'woocommerce_variable_product_before_variations' hook if WC>3.34 to add the "custom From string field" to the Variations tab (https://github.com/woocommerce/woocommerce/pull/19557#pullrequestreview-107731914)
 $variations_hook = 'woocommerce_product_options_advanced';
-if(true === PP_Dependencies::is_woocommerce_active( '3.3.5' )){
+if(true === PP_Dependencies::is_woocommerce_active( '3.3.6' )){
 	$variations_hook = 'woocommerce_variable_product_before_variations';
 }
 
