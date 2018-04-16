@@ -29,23 +29,23 @@ To install:
 
 Edit the product and go to its General tab. There you'll find a new field named "Custom price string". By default it will display the current price string (f.e: "$10 on the 1st of each month with a 30-day free trial"). Use this field to change this string to whatever you want (f.e: "$10 each month").
 
-![Custom simple Product price string](https://d2ffutrenqvap3.cloudfront.net/items/0E3D1x0Z0q322F0O1r0I/Image%202018-03-28%20at%2010.58.48%20p.%20m..png?v=e9c8f0aa)
+![Custom simple Product price string](https://github.com/Prospress/woocommerce-subscriptions-custom-pricestring/raw/master/includes/imgs/custom_pricestring_simple.png)
 
 ### Set Product Custom Pice String for a variable (subscription or not) product
 
 Edit the product and go to its Variations tab. Expand any of the existing variations and there you'll find the "Custom price string". Again, you can use this field to change this string to whatever you want (f.e: "$10 each month"). Each variation can have a different custom price string.
 
-![Custom variation price string](https://d2ffutrenqvap3.cloudfront.net/items/2u2L3m343t1h3C13431U/Image%202018-03-28%20at%2011.03.06%20p.%20m..png?v=3465710c)
+![Custom variation price string](https://github.com/Prospress/woocommerce-subscriptions-custom-pricestring/raw/master/includes/imgs/custom_pricestring_variable.png)
 
 ### Set Product Custom From String for a variable (subscription or not) product
 
 By default, on each variable product page (frontend), a "From" sting is displayed, showing the minimal starting price of the product. If you edit a variable product and go to its Variations tab, you'll find a new field named "Custom Fom String" that you can can use to customize this string (f.e: "Starting at $10"). 
 
-![Custom variable product From string](https://d2ffutrenqvap3.cloudfront.net/items/1y2R0V1f2V342t0J3A3A/Image%202018-03-28%20at%2011.08.15%20p.%20m..png?v=7b535716)
+![Custom variable product From string](https://raw.githubusercontent.com/Prospress/woocommerce-subscriptions-custom-pricestring/master/includes/imgs/custom_from_string.png)
 * _NOTE: If you're using a WooCommerce version prior or equal to 3.3.4, this field will appear in "Advanced" tab instead._
 
 ### Result on the Frontend
-![Product with custom From and Price string](https://d2ffutrenqvap3.cloudfront.net/items/1s0Y001b1Q3D2r2l2U3A/Image%202018-03-28%20at%2011.11.17%20p.%20m..png?v=01bb032d)
+![Product with custom From and Price string](https://raw.githubusercontent.com/Prospress/woocommerce-subscriptions-custom-pricestring/master/includes/imgs/frontend.png)
 
 ### Updates
 
