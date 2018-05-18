@@ -42,7 +42,10 @@ Edit the product and go to its Variations tab. Expand any of the existing variat
 By default, on each variable product page (frontend), a "From" sting is displayed, showing the minimal starting price of the product. If you edit a variable product and go to its Variations tab, you'll find a new field named "Custom Fom String" that you can can use to customize this string (f.e: "Starting at $10"). 
 
 ![Custom variable product From string](https://raw.githubusercontent.com/Prospress/woocommerce-subscriptions-custom-pricestring/master/includes/imgs/custom_from_string.png)
-* _NOTE: If you're using a WooCommerce version prior or equal to 3.3.5, this field will appear in "Advanced" tab instead._
+* _NOTE: The 'From:' custom price string is located in the 'Advanced' tab for WC versions 3.3.5 and before._
+
+![Custom variable product From string WC 3.4+](https://raw.githubusercontent.com/Prospress/woocommerce-subscriptions-custom-pricestring/master/includes/imgs/custom_from_string_wc-3.4+.png)
+* _NOTE: The 'From:' custom price string is located in the 'Variations' tab for WC versions 3.4+._
 
 ### Result on the Frontend
 ![Product with custom From and Price string](https://raw.githubusercontent.com/Prospress/woocommerce-subscriptions-custom-pricestring/master/includes/imgs/frontend.png)
