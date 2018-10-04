@@ -2,16 +2,11 @@
 
 WooCommerce Subscriptions - Custom Price String is an experimental mini-extension for [WooCommerce Subscriptions](http://woocommerce.com/products/woocommerce-subscriptions/) that allows you to customize the following default strings from WooCommerce and WooCommerce Subscriptions:
 
-- Simple product "price string"
-
-- Variable product "price string"
-
-- Subscription product "price string"
-
-- Subscription Variation "price string"
-
-- Variable product "From string"
-
+- Simple product price
+- Variable product price
+- Subscription product price
+- Subscription Variation price
+- Variable product **From** price
 
 ## Installation
 
@@ -25,19 +20,19 @@ To install:
 
 ## How-to
 
-### Set Product Custom Pice String for a simple (subscription or not) product
+### Set Product Custom Price String for a Simple Subscription Product
 
 Edit the product and go to its General tab. There you'll find a new field named "Custom price string". By default it will display the current price string (f.e: "$10 on the 1st of each month with a 30-day free trial"). Use this field to change this string to whatever you want (f.e: "$10 each month").
 
 ![Custom simple Product price string](https://github.com/Prospress/woocommerce-subscriptions-custom-pricestring/raw/master/includes/imgs/custom_pricestring_simple.png)
 
-### Set Product Custom Pice String for a variable (subscription or not) product
+### Set Product Custom Price String for a Variable Subscription Product
 
 Edit the product and go to its Variations tab. Expand any of the existing variations and there you'll find the "Custom price string". Again, you can use this field to change this string to whatever you want (f.e: "$10 each month"). Each variation can have a different custom price string.
 
 ![Custom variation price string](https://github.com/Prospress/woocommerce-subscriptions-custom-pricestring/raw/master/includes/imgs/custom_pricestring_variable.png)
 
-### Set Product Custom From String for a variable (subscription or not) product
+### Set Product Custom From String for a Variable Subscription Product
 
 By default, on each variable product page (frontend), a "From" sting is displayed, showing the minimal starting price of the product. If you edit a variable product and go to its Variations tab, you'll find a new field named "Custom Fom String" that you can can use to customize this string (f.e: "Starting at $10"). 
 
