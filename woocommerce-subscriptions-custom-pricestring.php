@@ -86,11 +86,11 @@ function wcs_cps_admin_field(){
 			'id'          => '_custom_price_string',
 			'class'       => 'wc_input_custom_price_string short',
 			'label'       => __( 'Custom price string', 'woocommerce-subscriptions' ),
-			'placeholder' => strip_tags($original_price_string),
+			'placeholder' => apply_filters( 'wcs_custom_price_string_value', $original_price_string ),
 			'description' => __( 'Customize the default price string that is generated for this specific product. Leave it empty to use the default string.', 'woocommerce-subscriptions' ),
 			'desc_tip'    => true,
 			'type'        => 'text',
-			'value'		  => strip_tags( $custom_price_string ),
+			'value'		  => apply_filters( 'wcs_custom_price_string_value', $custom_price_string ),
 			'data_type'   => 'any'
 		) );
  }
@@ -123,11 +123,11 @@ function wcs_cps_variation_admin_field($loop, $variation_data, $variation){
 			'id'          => '_custom_price_string['.$loop.']',
 			'class'       => 'wc_input_custom_price_string short',
 			'label'       => __( 'Custom price string', 'woocommerce-subscriptions' ),
-			'placeholder' => strip_tags($original_price_string),
+			'placeholder' => apply_filters( 'wcs_custom_price_string_value', $original_price_string ),
 			'description' => __( 'Customize the default price string that is generated for this specific variation. Leave it empty to use the default string.', 'woocommerce-subscriptions' ),
 			'desc_tip'    => true,
 			'type'        => 'text',
-			'value'		  => strip_tags( $custom_price_string ),
+			'value'		  => apply_filters( 'wcs_custom_price_string_value', $custom_price_string ),
 			'data_type'   => 'any'
 		) );
  }
@@ -157,16 +157,29 @@ function wcs_cps_from_field(){
 		'id'          => '_custom_from_string',
 		'class'       => 'wc_input_custom_from_string short',
 		'label'       => __( 'Custom from string', 'woocommerce-subscriptions' ),
-		'placeholder' => strip_tags($original_from_string),
+		'placeholder' => apply_filters( 'wcs_custom_price_string_value', $original_from_string ),
 		'description' => __( 'Customize the default From string that is generated for this specific product. Leave it empty to use the default string.', 'woocommerce-subscriptions' ),
 		'desc_tip'    => true,
 		'type'        => 'text',
-		'value'		  => strip_tags( $custom_from_string ),
+		'value'		  => apply_filters( 'wcs_custom_price_string_value', $custom_from_string ),
 		'data_type'   => 'any'
 	) );
 	echo "</div>";
 }
 add_action($variations_hook, 'wcs_cps_from_field'); 
+
+
+/**
+ * Strip the HTML tags of the custom price string fields (added as a filter to allow customers to remove it if needed)
+ * 
+ * @access public
+ * @param string $price_string_value
+ * @return string $price_string_value
+ */
+function strip_tags_of_custom_price_value( $price_string_value ) {
+	return strip_tags( $price_string_value );
+}
+add_filter( 'wcs_custom_price_string_value', 'strip_tags_of_custom_price_value', 10, 1);
 
 
 /**
