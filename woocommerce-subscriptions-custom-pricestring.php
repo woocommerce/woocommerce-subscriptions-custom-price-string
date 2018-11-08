@@ -171,7 +171,7 @@ add_action($variations_hook, 'wcs_cps_from_field');
 
 /**
  * Strip the HTML tags of the custom price string fields (added as a filter to allow customers to remove it if needed)
- * 
+ *
  * @access public
  * @param string $price_string_value
  * @return string $price_string_value
