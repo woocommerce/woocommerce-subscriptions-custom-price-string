@@ -1,0 +1,6 @@
+<wpml-config>
+	<custom-fields>
+        <custom-field action="translate">custom_price_string</custom-field>
+        <custom-field action="translate">custom_from_string</custom-field>
+    </custom-fields>	
+</wpml-config>
