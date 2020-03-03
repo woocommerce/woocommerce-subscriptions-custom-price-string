@@ -12,7 +12,7 @@ WooCommerce Subscriptions - Custom Price String is an experimental mini-extensio
 
 To install:
 
-1. Download the latest version of the plugin [here](https://github.com/woocommerce/woocommerce-subscriptions-custom-pricestring/archive/master.zip)
+1. Download the latest version of the plugin [here](https://github.com/woocommerce/woocommerce-subscriptions-custom-price-string/archive/master.zip)
 1. Go to **Plugins > Add New > Upload** administration screen on your WordPress site
 1. Select the ZIP file you just downloaded
 1. Click **Install Now**
