@@ -205,11 +205,22 @@ add_filter( 'wcs_custom_price_string_value', 'strip_tags_of_custom_price_value',
  */
 function save_custom_price_string( $post_id ) {
 	if ( isset( $_REQUEST['_custom_price_string'] ) ) {
-		update_post_meta( $post_id, '_custom_price_string', stripslashes( $_REQUEST['_custom_price_string'] ) );
+
+		// If it is coming from a variable subscription product, skip it (as we already use the woocommerce_save_product_variation hook for this purpose).
+		if ( is_array( $_REQUEST['_custom_price_string'] ) ) {
+			return;
+		}
+
+		$custom_price_string = wp_unslash( $_REQUEST['_custom_price_string'] );
+		update_post_meta( $post_id, '_custom_price_string', $custom_price_string );
+
 	}
 
 	if ( isset( $_REQUEST['_custom_from_string'] ) ) {
-		update_post_meta( $post_id, '_custom_from_string', stripslashes( $_REQUEST['_custom_from_string'] ) );
+
+		$custom_from_string = wp_unslash( $_REQUEST['_custom_from_string'] );
+		update_post_meta( $post_id, '_custom_from_string', $custom_from_string );
+
 	}
 }
 add_action( 'save_post', 'save_custom_price_string', 11 );
