@@ -6,7 +6,7 @@
  * Author: Prospress Inc.
  * Author URI: https://prospress.com/
  * License: GPLv3
- * Version: 1.0.4
+ * Version: 1.0.4 (no dependencies)
  * WC requires at least: 3.0.0
  * WC tested up to: 3.4.0
  *
@@ -43,16 +43,6 @@ TODO:
 
 
 require_once 'includes/class-pp-dependencies.php';
-
-if ( false === PP_Dependencies::is_woocommerce_active( '3.0' ) ) {
-	PP_Dependencies::enqueue_admin_notice( 'WooCommerce Subscriptions - Custom price string', 'WooCommerce', '3.0' );
-	return;
-}
-
-if ( false === PP_Dependencies::is_subscriptions_active( '2.1' ) ) {
-	PP_Dependencies::enqueue_admin_notice( 'WooCommerce Subscriptions - Custom price string', 'WooCommerce Subscriptions', '2.1' );
-	return;
-}
 
 // Uses 'woocommerce_variable_product_before_variations' hook if WC>3.34 to add the "custom From string field" to the Variations tab (https://github.com/woocommerce/woocommerce/pull/19557#pullrequestreview-107731914).
 $variations_hook = 'woocommerce_product_options_advanced';
