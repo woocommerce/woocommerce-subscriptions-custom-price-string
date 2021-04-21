@@ -7,6 +7,7 @@ WooCommerce Subscriptions - Custom Price String is an experimental mini-extensio
 - Subscription product price
 - Subscription Variation price
 - Variable product **From** price
+- Bookable product price
 
 ## Installation
 
@@ -44,6 +45,14 @@ By default, on each variable product page (frontend), a "From" sting is displaye
 
 ### Result on the Frontend
 ![Product with custom From and Price string](https://raw.githubusercontent.com/Prospress/woocommerce-subscriptions-custom-pricestring/master/includes/imgs/frontend.png)
+
+### Set Product Custom Price String for a Bookable product
+If you're using [WooCommerce Bookings](https://woocommerce.com/products/woocommerce-bookings/), you may also like to customize the price string of a bookable product in some situations. In these cases, you can find the "Custom price string" field located in the Advanced tab. This field will replace the main price string of the bookable product, located below its title.
+
+![image](https://user-images.githubusercontent.com/1201868/115563730-226a3500-a2b8-11eb-91e5-79947e5b8a58.png)
+
+![image](https://user-images.githubusercontent.com/1201868/115563762-2a29d980-a2b8-11eb-8ba1-5fce4a7fc2e1.png)
+
 
 ### Updates
 
