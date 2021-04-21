@@ -49,15 +49,15 @@ if ( false === PP_Dependencies::is_woocommerce_active( '3.0' ) ) {
 	return;
 }
 
-if ( false === PP_Dependencies::is_subscriptions_active( '2.1' ) ) {
-	PP_Dependencies::enqueue_admin_notice( 'WooCommerce Subscriptions - Custom price string', 'WooCommerce Subscriptions', '2.1' );
-	return;
-}
-
 // Uses 'woocommerce_variable_product_before_variations' hook if WC>3.34 to add the "custom From string field" to the Variations tab (https://github.com/woocommerce/woocommerce/pull/19557#pullrequestreview-107731914).
 $variations_hook = 'woocommerce_product_options_advanced';
 if ( true === PP_Dependencies::is_woocommerce_active( '3.3.6' ) ) {
 	$variations_hook = 'woocommerce_variable_product_before_variations';
+}
+
+if ( class_exists( 'WC_Bookings' ) ) {
+	// WooCommerce Bookings is enabled -> Add the custom from string field in the "Advanced" tab.
+	add_action( 'woocommerce_product_options_advanced', 'wcs_cps_from_field' );
 }
 
 /**
@@ -302,6 +302,7 @@ function wcs_cps_from_string( $price, $product ) {
 	$target_product_types = array(
 		'variable',
 		'variable-subscription',
+		'booking',
 	);
 
 	if ( in_array( $product->get_type(), $target_product_types ) ) {
