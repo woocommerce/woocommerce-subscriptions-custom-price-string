@@ -60,6 +60,11 @@ if ( true === PP_Dependencies::is_woocommerce_active( '3.3.6' ) ) {
 	$variations_hook = 'woocommerce_variable_product_before_variations';
 }
 
+if ( class_exists( 'WC_Bookings' ) ) {
+	// WooCommerce Bookings is enabled -> Add the custom from string field in the "Advanced" tab.
+	add_action( 'woocommerce_product_options_advanced', 'wcs_cps_from_field' );
+}
+
 /**
  * Adds the 'Custom Price String' field to the product editor page.
  *
@@ -302,6 +307,7 @@ function wcs_cps_from_string( $price, $product ) {
 	$target_product_types = array(
 		'variable',
 		'variable-subscription',
+		'booking',
 	);
 
 	if ( in_array( $product->get_type(), $target_product_types ) ) {
