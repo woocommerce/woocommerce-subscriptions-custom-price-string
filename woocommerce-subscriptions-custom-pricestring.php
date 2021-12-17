@@ -6,7 +6,7 @@
  * Author: Prospress Inc.
  * Author URI: https://prospress.com/
  * License: GPLv3
- * Version: 1.0.4
+ * Version: 1.0.5
  * WC requires at least: 3.0.0
  * WC tested up to: 3.4.0
  *
@@ -211,12 +211,14 @@ add_filter( 'wcs_custom_price_string_value', 'strip_tags_of_custom_price_value',
 function save_custom_price_string( $post_id ) {
 	if ( isset( $_REQUEST['_custom_price_string'] ) ) {
 
-		// If it is coming from a variable subscription product, skip it (as we already use the woocommerce_save_product_variation hook for this purpose).
-		if ( is_array( $_REQUEST['_custom_price_string'] ) ) {
-			return;
+		$custom_price_string = $_REQUEST['_custom_price_string'];
+
+		// If it is coming from a variable subscription product, get only the first element (the one that belongs to the parent product)  as we're already saving the variation ones in a different function.
+		if ( is_array( $custom_price_string ) ) {
+			$custom_price_string = $custom_price_string[0];
 		}
 
-		$custom_price_string = wp_unslash( $_REQUEST['_custom_price_string'] );
+		$custom_price_string = wp_unslash( $custom_price_string );
 		update_post_meta( $post_id, '_custom_price_string', $custom_price_string );
 
 	}
