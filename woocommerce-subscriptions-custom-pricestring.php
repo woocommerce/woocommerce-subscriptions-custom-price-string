@@ -38,6 +38,12 @@
 
 // add_filter("woocommerce_subscription_price_string", "wcs_custom_price_strings_cart", 10, 2);
 
+// Declare HPOS compat per https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book#declaring-extension-incompatibility
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
 
 require_once 'includes/class-pp-dependencies.php';
 
