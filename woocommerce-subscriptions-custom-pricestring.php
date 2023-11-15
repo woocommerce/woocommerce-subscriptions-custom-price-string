@@ -1,19 +1,16 @@
 <?php
 /**
  * Plugin Name: WooCommerce Subscriptions - Custom Price String
- * Plugin URI: https://github.com/Prospress/woocommerce-subscriptions-custom-pricestring.git
+ * Plugin URI: https://github.com/woocommerce/woocommerce-subscriptions-custom-price-string.git
  * Description: A small add-on plugin to customize the product price strings
- * Author: Prospress Inc.
- * Author URI: https://prospress.com/
+ * Author: WooCommerce
+ * Author URI: https://woo.com
  * License: GPLv3
- * Version: 1.0.5
+ * Version: 1.0.6
  * WC requires at least: 3.0.0
- * WC tested up to: 3.4.0
  *
- * GitHub Plugin URI: Prospress/woocommerce-subscriptions-custom-pricestring
+ * GitHub Plugin URI: woocommerce/woocommerce-subscriptions-custom-price-string
  * GitHub Branch: master
- *
- * Copyright 2018 Prospress, Inc.  (email : freedoms@prospress.com)
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,15 +26,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @package     WooCommerce Subscriptions - Custom Price String
- * @author      Prospress Inc.
+ * @author      WooCommerce
  * @since       1.0
  */
 
- /*
-TODO:
-- Should the custom price string for simple/variable products (not subscriptions) be displayed on the cart page too?
-- Check the scope of the custom strings (product page, cart, checkout, emails, backend, orders, renewals, etc)
-*/
+/*
+	TODO:
+	- Should the custom price string for simple/variable products (not subscriptions) be displayed on the cart page too?
+	- Check the scope of the custom strings (product page, cart, checkout, emails, backend, orders, renewals, etc)
+ */
 
 // add_filter("woocommerce_subscription_price_string", "wcs_custom_price_strings_cart", 10, 2);
 
@@ -79,7 +76,13 @@ function wcs_cps_admin_field() {
 	if ( 'subscription' === $p_type || 'variable-subscription' === $p_type ) {
 		$price                 = WC_Subscriptions_Product::get_price( $product );
 		$custom_price_string   = WC_Subscriptions_Product::get_price_string( $post->ID, array( 'price' => $price ) );
-		$original_price_string = WC_Subscriptions_Product::get_price_string( $post->ID, array( 'price' => $price, 'custom' => false ) );
+		$original_price_string = WC_Subscriptions_Product::get_price_string(
+			$post->ID,
+			array(
+				'price'  => $price,
+				'custom' => false,
+			)
+		);
 	} else {
 		$original_price_string = $product->get_price();
 		$custom_price_string   = get_post_meta( $post->ID, '_custom_price_string', true );
@@ -121,10 +124,16 @@ function wcs_cps_variation_admin_field( $loop, $variation_data, $variation ) {
 
 	if ( 'variable-subscription' === $wc_variation->get_type() ) {
 		$custom_price_string   = WC_Subscriptions_Product::get_price_string( ( $variation->ID ), array( 'price' => $price ) );
-		$original_price_string = WC_Subscriptions_Product::get_price_string( ( $variation->ID ), array( 'price' => $price, 'custom' => false ) );
+		$original_price_string = WC_Subscriptions_Product::get_price_string(
+			( $variation->ID ),
+			array(
+				'price'  => $price,
+				'custom' => false,
+			)
+		);
 	} else {
 		$original_price_string = $wc_variation->get_price();
-		$custom_price_string = get_post_meta( $variation->ID, '_custom_price_string', true );
+		$custom_price_string   = get_post_meta( $variation->ID, '_custom_price_string', true );
 	}
 
 	if ( $original_price_string === $custom_price_string ) {
@@ -196,7 +205,7 @@ add_action( $variations_hook, 'wcs_cps_from_field' );
  * @return string $price_string_value
  */
 function strip_tags_of_custom_price_value( $price_string_value ) {
-	return strip_tags( $price_string_value );
+	return wp_strip_all_tags( $price_string_value );
 }
 add_filter( 'wcs_custom_price_string_value', 'strip_tags_of_custom_price_value', 10, 1 );
 
@@ -312,7 +321,7 @@ function wcs_cps_from_string( $price, $product ) {
 		'booking',
 	);
 
-	if ( in_array( $product->get_type(), $target_product_types ) ) {
+	if ( in_array( $product->get_type(), $target_product_types, true ) ) {
 		$custom_from_string = get_post_meta( $product->get_id(), '_custom_from_string', true );
 		if ( '' !== $custom_from_string ) {
 			$price = $custom_from_string;
